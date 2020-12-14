@@ -1,0 +1,20 @@
+{
+	"name": "AzureKeyVault",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Linked Service for Azure Key Vault",
+		"parameters": {
+			"baseUrl": {
+				"type": "String"
+			}
+		},
+		"annotations": [
+			"keyvault",
+			"acaz"
+		],
+		"type": "AzureKeyVault",
+		"typeProperties": {
+			"baseUrl": "@{linkedService().baseUrl}"
+		}
+	}
+}

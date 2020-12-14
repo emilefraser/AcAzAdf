@@ -1,0 +1,7 @@
+{
+	"name": "AcAzNeVmIntegrationRuntime",
+	"properties": {
+		"type": "SelfHosted",
+		"description": "Integration Runtime running on my Azure Vm (AcAzNeVM)"
+	}
+}

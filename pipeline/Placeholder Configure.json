@@ -1,0 +1,22 @@
+{
+	"name": "Placeholder Configure",
+	"properties": {
+		"activities": [
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			}
+		],
+		"folder": {
+			"name": "3_Configure"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-14T13:15:11Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
