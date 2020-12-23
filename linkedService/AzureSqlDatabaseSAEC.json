@@ -4,7 +4,7 @@
 	"properties": {
 		"description": "Temp db connection",
 		"parameters": {
-			"AzureKeyVaultBaseUrl": {
+			"vaultBaseUrl": {
 				"type": "string",
 				"defaultValue": "https://acazeukeyvault.vault.azure.net/"
 			}
@@ -20,7 +20,7 @@
 					"type": "LinkedServiceReference",
 					"parameters": {
 						"vaultBaseUrl": {
-							"value": "@linkedService().AzureKeyVaultBaseUrl",
+							"value": "@linkedService().vaultBaseUrl",
 							"type": "Expression"
 						}
 					}
