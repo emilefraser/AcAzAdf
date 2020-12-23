@@ -57,7 +57,13 @@
 				"outputs": [
 					{
 						"referenceName": "AzureBlobStorage_Parquet",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"baseUrl": {
+								"value": "@variables('baseUrl')",
+								"type": "Expression"
+							}
+						}
 					}
 				]
 			}
