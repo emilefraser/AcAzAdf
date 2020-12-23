@@ -21,7 +21,7 @@
 					"parameters": {
 						"baseUrl": {
 							"value": "@linkedService().vaultBaseUrl",
-							"type": "Expression"
+							"type": "string"
 						}
 					}
 				},
