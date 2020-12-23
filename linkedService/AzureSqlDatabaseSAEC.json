@@ -5,7 +5,7 @@
 		"description": "Temp db connection",
 		"parameters": {
 			"vaultBaseUrl": {
-				"type": "string",
+				"type": "String",
 				"defaultValue": "https://azurekeyvaultname.vault.azure.net/"
 			}
 		},
