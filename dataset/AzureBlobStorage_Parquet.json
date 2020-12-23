@@ -5,7 +5,10 @@
 			"referenceName": "AzureBlobStorage",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"AzureKeyVaultBaseUrl": "https://acazeukeyvault.vault.azure.net/"
+				"AzureKeyVaultBaseUrl": {
+					"value": "@dataset().baseUrl",
+					"type": "Expression"
+				}
 			}
 		},
 		"parameters": {
