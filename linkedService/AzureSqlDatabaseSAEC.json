@@ -5,8 +5,7 @@
 		"description": "Temp db connection",
 		"parameters": {
 			"vaultBaseUrl": {
-				"type": "string",
-				"defaultValue": "https://acazeukeyvault.vault.azure.net/"
+				"type": "string"
 			}
 		},
 		"annotations": [],
