@@ -12,7 +12,7 @@
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
-			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=saazs-v-pwrbidev.database.windows.net;Initial Catalog=saec-powerbi-dev;User ID=\"saec_AcctechUser \";baseUrl=@linkedService()",
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=saazs-v-pwrbidev.database.windows.net;Initial Catalog=saec-powerbi-dev;User ID=saec_AcctechUser",
 			"password": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
