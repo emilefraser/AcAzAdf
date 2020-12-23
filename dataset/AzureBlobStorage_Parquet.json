@@ -15,7 +15,8 @@
 		"type": "Parquet",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation"
+				"type": "AzureBlobStorageLocation",
+				"container": "saps4hana"
 			},
 			"compressionCodec": "snappy"
 		},
