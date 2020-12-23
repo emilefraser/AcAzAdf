@@ -45,7 +45,13 @@
 				"inputs": [
 					{
 						"referenceName": "dataset_AzureSqlServer",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"baseUrl": {
+								"value": "@variables('baseUrl')",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [
@@ -56,9 +62,9 @@
 				]
 			}
 		],
-		"parameters": {
+		"variables": {
 			"baseUrl": {
-				"type": "string",
+				"type": "String",
 				"defaultValue": "https://acazeukeyvault.vault.azure.net/"
 			}
 		},
