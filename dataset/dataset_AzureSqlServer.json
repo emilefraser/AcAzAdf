@@ -2,8 +2,11 @@
 	"name": "dataset_AzureSqlServer",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabase",
-			"type": "LinkedServiceReference"
+			"referenceName": "AzureSqlDatabaseSAEC",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"AzureKeyVaultBaseUrl": "https://acazeukeyvault.vault.azure.net/"
+			}
 		},
 		"folder": {
 			"name": "Database"
@@ -12,8 +15,8 @@
 		"type": "AzureSqlTable",
 		"schema": [],
 		"typeProperties": {
-			"schema": "inout",
-			"table": "arm_template"
+			"schema": "dm",
+			"table": "DD01V_Generated_Table_for_View_PROD"
 		}
 	},
 	"type": "Microsoft.DataFactory/factories/datasets"

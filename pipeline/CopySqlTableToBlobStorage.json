@@ -1,0 +1,29 @@
+{
+	"name": "CopySqlTableToBlobStorage",
+	"properties": {
+		"description": "Copies a Sql Table Data to Blob Storage",
+		"activities": [
+			{
+				"name": "Copy Sql Table to Blob Stroage",
+				"description": "Copy activity that copies a Sql Table Data to Blob Storage",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"enableStaging": false
+				}
+			}
+		],
+		"folder": {
+			"name": "8_Extract"
+		},
+		"annotations": []
+	}
+}
