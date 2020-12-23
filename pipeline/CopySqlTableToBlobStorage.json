@@ -48,7 +48,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"baseUrl": {
-								"value": "@variables('baseUrl')",
+								"value": "https://acazeukeyvault.vault.azure.net/",
 								"type": "Expression"
 							}
 						}
@@ -60,7 +60,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"baseUrl": {
-								"value": "@variables('baseUrl')",
+								"value": "https://acazeukeyvault.vault.azure.net/",
 								"type": "Expression"
 							}
 						}
