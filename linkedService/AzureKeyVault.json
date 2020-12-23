@@ -6,7 +6,7 @@
 		"parameters": {
 			"baseUrl": {
 				"type": "String",
-				"default_value": "https://acazeukeyvault.vault.azure.net/"
+				"defaultValue": "https://acazeukeyvault.vault.azure.net/"
 			}
 		},
 		"annotations": [],
