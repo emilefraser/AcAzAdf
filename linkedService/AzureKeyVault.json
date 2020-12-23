@@ -8,10 +8,7 @@
 				"type": "String"
 			}
 		},
-		"annotations": [
-			"keyvault",
-			"acaz"
-		],
+		"annotations": [],
 		"typeProperties": {
 			"baseUrl": "@{linkedService().baseUrl}"
 		}
