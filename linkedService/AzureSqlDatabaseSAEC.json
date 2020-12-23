@@ -18,14 +18,11 @@
 				"store": {
 					"referenceName": "AzureKeyVault",
 					"type": "LinkedServiceReference",
-					"parameters": {
-						"baseUrl": {
-							"value": "@linkedService().vaultBaseUrl",
-							"type": "Expression"
-						}
-					}
-				},
-				"secretName": "saec"
+					"typeProperties": {
+						"baseUrl": "@{linkedService().vaultBaseUrl}"
+					},
+					"secretName": "saec"
+				}
 			}
 		}
 	}
