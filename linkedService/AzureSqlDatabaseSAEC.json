@@ -17,12 +17,9 @@
 				"type": "AzureKeyVaultSecret",
 				"store": {
 					"referenceName": "AzureKeyVault",
-					"type": "LinkedServiceReference",
-					"typeProperties": {
-						"baseUrl": "@{linkedService().baseUrl}"
-					},
-					"secretName": "saec"
-				}
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "saec"
 			}
 		}
 	}
