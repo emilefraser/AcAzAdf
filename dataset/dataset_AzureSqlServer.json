@@ -2,7 +2,7 @@
 	"name": "dataset_AzureSqlServer",
 	"properties": {
 		"linkedServiceName": {
-			"referenceName": "AzureSqlDatabaseSAEC",
+			"referenceName": "AzureSqlDBSAEC",
 			"type": "LinkedServiceReference"
 		},
 		"folder": {
