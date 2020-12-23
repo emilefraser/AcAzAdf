@@ -5,10 +5,7 @@
 			"referenceName": "AzureSqlDatabaseSAEC",
 			"type": "LinkedServiceReference",
 			"parameters": {
-				"AzureKeyVaultBaseUrl": {
-					"value": "https://acazeukeyvault.vault.azure.net/",
-					"type": "Expression"
-				}
+				"vaultBaseUrl": "https://acazeukeyvault.vault.azure.net/"
 			}
 		},
 		"folder": {
