@@ -57,13 +57,7 @@
 				"outputs": [
 					{
 						"referenceName": "AzureBlobStorage_Parquet",
-						"type": "DatasetReference",
-						"parameters": {
-							"baseUrl": {
-								"value": "https://acazeukeyvault.vault.azure.net/",
-								"type": "Expression"
-							}
-						}
+						"type": "DatasetReference"
 					}
 				]
 			}
