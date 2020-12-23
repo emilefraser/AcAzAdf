@@ -3,13 +3,7 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"AzureKeyVaultBaseUrl": {
-					"value": "@dataset().baseUrl",
-					"type": "Expression"
-				}
-			}
+			"type": "LinkedServiceReference"
 		},
 		"parameters": {
 			"baseUrl": {
