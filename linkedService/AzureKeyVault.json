@@ -4,7 +4,7 @@
 	"properties": {
 		"description": "Linked Service for Azure Key Vault",
 		"parameters": {
-			"baseUrl": {
+			"AzureKeyVaultBaseUrl": {
 				"type": "String"
 			}
 		},
@@ -14,7 +14,7 @@
 		],
 		"type": "AzureKeyVault",
 		"typeProperties": {
-			"baseUrl": "@{linkedService().AzureKeyVaultBaseUrl}"
+			"AzureKeyVaultBaseUrl": "@{linkedService().AzureKeyVaultBaseUrl}"
 		}
 	}
 }
