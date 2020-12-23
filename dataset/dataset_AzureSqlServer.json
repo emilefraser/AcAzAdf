@@ -3,10 +3,7 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureSqlDatabaseSAEC",
-			"type": "LinkedServiceReference",
-			"parameters": {
-				"vaultBaseUrl": "https://acazeukeyvault.vault.azure.net/"
-			}
+			"type": "LinkedServiceReference"
 		},
 		"folder": {
 			"name": "Database"
