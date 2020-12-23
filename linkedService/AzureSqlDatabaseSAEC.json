@@ -12,6 +12,7 @@
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
 			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=saazs-v-pwrbidev.database.windows.net;Initial Catalog=saec-powerbi-dev;User ID=saec_AcctechUser",
+			"vaultBaseUrl": "@linkedService().vaultBaseUrl",
 			"password": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
