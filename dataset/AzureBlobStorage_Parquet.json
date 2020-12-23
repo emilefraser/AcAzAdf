@@ -3,7 +3,10 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"AzureKeyVaultBaseUrl": "https://acazeukeyvault.vault.azure.net/"
+			}
 		},
 		"folder": {
 			"name": "AzureBlobStorage"
