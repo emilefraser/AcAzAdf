@@ -27,7 +27,7 @@
 				},
 				"secretName": "saec"
 			},
-			"vaultBaseUrl": "@{linkedService().vaultBaseUrl}"
+			"vaultBaseUrl": "@linkedService().vaultBaseUrl"
 		}
 	}
 }
