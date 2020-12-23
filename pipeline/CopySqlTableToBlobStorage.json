@@ -57,7 +57,7 @@
 			}
 		],
 		"parameters": {
-			"AzureKeyVaultBaseUrl": {
+			"vaultBaseUrl": {
 				"type": "string",
 				"defaultValue": "https://acazeukeyvault.vault.azure.net/"
 			}
