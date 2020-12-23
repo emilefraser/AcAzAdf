@@ -19,7 +19,7 @@
 					"referenceName": "AzureKeyVault",
 					"type": "LinkedServiceReference",
 					"parameters": {
-						"vaultBaseUrl": {
+						"baseUrl": {
 							"value": "@linkedService().vaultBaseUrl",
 							"type": "Expression"
 						}
