@@ -11,9 +11,9 @@
 				"type": "AzureKeyVaultSecret",
 				"store": {
 					"referenceName": "AzureKeyVault",
-					"type": "LinkedServiceReference",
-					"vaultBaseUrl": "https://acazeukeyvault.vault.azure.net/"
+					"type": "LinkedServiceReference"
 				},
+				"vaultBaseUrl": "https://acazeukeyvault.vault.azure.net/",
 				"secretName": "saec"
 			}
 		}
