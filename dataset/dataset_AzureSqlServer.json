@@ -6,15 +6,9 @@
 			"type": "LinkedServiceReference",
 			"parameters": {
 				"AzureKeyVaultBaseUrl": {
-					"value": "@dataset().baseUrl",
+					"value": "https://acazeukeyvault.vault.azure.net/",
 					"type": "Expression"
 				}
-			}
-		},
-		"parameters": {
-			"baseUrl": {
-				"type": "string",
-				"defaultValue": "https://acazeukeyvault.vault.azure.net/"
 			}
 		},
 		"folder": {
