@@ -20,7 +20,7 @@
 					"type": "LinkedServiceReference",
 					"parameters": {
 						"baseUrl": {
-							"value": "@vaultBaseUrl",
+							"value": "@linkedService().vaultBaseUrl",
 							"type": "Expression"
 						}
 					}
