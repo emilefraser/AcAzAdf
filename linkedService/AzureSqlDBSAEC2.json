@@ -1,0 +1,19 @@
+{
+	"name": "AzureSqlDBSAEC2",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"annotations": [],
+		"type": "AzureSqlDatabase",
+		"typeProperties": {
+			"connectionString": "Integrated Security=False;Encrypt=True;Connection Timeout=30;Data Source=saazs-v-pwrbidev.database.windows.net;Initial Catalog=saec-powerbi-dev;User ID=\"saec_AcctechUser \"",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "saec"
+			}
+		}
+	}
+}
