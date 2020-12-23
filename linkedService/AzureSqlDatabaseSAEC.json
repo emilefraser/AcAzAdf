@@ -3,12 +3,6 @@
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"description": "Temp db connection",
-		"parameters": {
-			"baseUrl": {
-				"type": "String",
-				"defaultValue": "https://azurekeyvaultname.vault.azure.net/"
-			}
-		},
 		"annotations": [],
 		"type": "AzureSqlDatabase",
 		"typeProperties": {
