@@ -1,7 +1,7 @@
 {
 	"name": "AzureKeyVault",
-	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
+		"type": "AzureKeyVault",
 		"description": "Linked Service for Azure Key Vault",
 		"parameters": {
 			"baseUrl": {
@@ -12,9 +12,8 @@
 			"keyvault",
 			"acaz"
 		],
-		"type": "AzureKeyVault",
 		"typeProperties": {
-			"baseUrl": "@{linkedService().AzureKeyVaultBaseUrl}"
+			"baseUrl": "@{linkedService().baseUrl}"
 		}
 	}
 }
