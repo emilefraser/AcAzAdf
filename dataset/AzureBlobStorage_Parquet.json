@@ -8,6 +8,12 @@
 				"AzureKeyVaultBaseUrl": "https://acazeukeyvault.vault.azure.net/"
 			}
 		},
+		"parameters": {
+			"baseUrl": {
+				"type": "string",
+				"defaultValue": "https://acazeukeyvault.vault.azure.net/"
+			}
+		},
 		"folder": {
 			"name": "AzureBlobStorage"
 		},
