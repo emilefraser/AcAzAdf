@@ -15,7 +15,8 @@
 				},
 				"vaultBaseUrl": "https://acazeukeyvault.vault.azure.net/",
 				"secretName": "saec"
-			}
+			},
+			"vaultBaseUrl": "https://acazeukeyvault.vault.azure.net/"
 		}
 	}
 }
