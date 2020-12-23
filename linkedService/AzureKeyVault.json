@@ -14,7 +14,7 @@
 		],
 		"type": "AzureKeyVault",
 		"typeProperties": {
-			"baseUrl": "@{linkedService().baseUrl}"
+			"baseUrl": "@{linkedService().AzureKeyVaultBaseUrl}"
 		}
 	}
 }
