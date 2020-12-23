@@ -7,14 +7,7 @@
 				"name": "Copy Sql Table to Blob Stroage",
 				"description": "Copy activity that copies a Sql Table Data to Blob Storage",
 				"type": "Copy",
-				"dependsOn": [
-					{
-						"activity": "Set variable1",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
+				"dependsOn": [],
 				"policy": {
 					"timeout": "7.00:00:00",
 					"retry": 0,
@@ -55,7 +48,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"baseUrl": {
-								"value": "https://acazeukeyvault.vault.azure.net/",
+								"value": "@pipeline().parameters.baseUrl",
 								"type": "Expression"
 							}
 						}
@@ -67,21 +60,11 @@
 						"type": "DatasetReference"
 					}
 				]
-			},
-			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"dependsOn": [],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "baseUrl",
-					"value": "https://acazeukeyvault.vault.azure.net/"
-				}
 			}
 		],
-		"variables": {
+		"parameters": {
 			"baseUrl": {
-				"type": "String",
+				"type": "string",
 				"defaultValue": "https://acazeukeyvault.vault.azure.net/"
 			}
 		},
