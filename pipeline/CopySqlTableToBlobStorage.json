@@ -24,12 +24,14 @@
 						"partitionOption": "None"
 					},
 					"sink": {
-						"type": "ParquetSink",
+						"type": "DelimitedTextSink",
 						"storeSettings": {
 							"type": "AzureBlobStorageWriteSettings"
 						},
 						"formatSettings": {
-							"type": "ParquetWriteSettings"
+							"type": "DelimitedTextWriteSettings",
+							"quoteAllText": true,
+							"fileExtension": ".csv"
 						}
 					},
 					"enableStaging": false,
@@ -50,7 +52,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "AzureBlobStorage_Parquet",
+						"referenceName": "AzureBlobStorage_Delimited",
 						"type": "DatasetReference"
 					}
 				]

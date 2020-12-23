@@ -13,9 +13,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "arm_template.json",
-				"folderPath": "json",
-				"container": "test"
+				"container": "saps4hana"
 			},
 			"encodingName": "UTF-8"
 		},
