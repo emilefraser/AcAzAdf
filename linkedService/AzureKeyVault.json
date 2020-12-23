@@ -5,7 +5,8 @@
 		"description": "Linked Service for Azure Key Vault",
 		"parameters": {
 			"baseUrl": {
-				"type": "String"
+				"type": "String",
+				"default_value": "https://acazeukeyvault.vault.azure.net/"
 			}
 		},
 		"annotations": [],
