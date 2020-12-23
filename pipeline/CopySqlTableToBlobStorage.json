@@ -56,12 +56,6 @@
 				]
 			}
 		],
-		"parameters": {
-			"vaultBaseUrl": {
-				"type": "string",
-				"defaultValue": "https://acazeukeyvault.vault.azure.net/"
-			}
-		},
 		"folder": {
 			"name": "8_Extract"
 		},
