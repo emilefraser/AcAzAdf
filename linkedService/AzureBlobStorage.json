@@ -3,6 +3,12 @@
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"description": "Linked Service to Azure Blob Storage",
+		"parameters": {
+			"AzureKeyVaultBaseUrl": {
+				"type": "string",
+				"defaultValue": "https://acazeukeyvault.vault.azure.net/"
+			}
+		},
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
@@ -11,7 +17,13 @@
 				"type": "AzureKeyVaultSecret",
 				"store": {
 					"referenceName": "AzureKeyVault",
-					"type": "LinkedServiceReference"
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"baseUrl": {
+							"value": "@linkedService().AzureKeyVaultBaseUrl",
+							"type": "Expression"
+						}
+					}
 				},
 				"secretName": "acazsansourceblob"
 			}
