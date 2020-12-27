@@ -1,0 +1,17 @@
+{
+	"name": "SapHanaDatabase",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
+	"properties": {
+		"description": "Generic Sap Hana Database",
+		"annotations": [],
+		"type": "SapHana",
+		"typeProperties": {
+			"connectionString": "servernode=192.168.111.128:39015;uid=SYSTEM",
+			"encryptedCredential": "eyJDcmVkZW50aWFsSWQiOiJiOWFiNDMzZi0wODg4LTQ0MzItYjUyYi01YjNmMDMwZTIxMzYiLCJWZXJzaW9uIjoiMi4wIiwiQ2xhc3NUeXBlIjoiTWljcm9zb2Z0LkRhdGFQcm94eS5Db3JlLkludGVyU2VydmljZURhdGFDb250cmFjdC5DcmVkZW50aWFsU1UwNkNZMTQifQ=="
+		},
+		"connectVia": {
+			"referenceName": "PYROMANIC-integrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
