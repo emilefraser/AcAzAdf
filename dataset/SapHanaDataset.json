@@ -1,0 +1,20 @@
+{
+	"name": "SapHanaDataset",
+	"properties": {
+		"description": "SAP HANA Dataset",
+		"linkedServiceName": {
+			"referenceName": "SapHanaDatabase",
+			"type": "LinkedServiceReference"
+		},
+		"folder": {
+			"name": "Database/SAP Hana"
+		},
+		"annotations": [],
+		"type": "SapHanaTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": "SYS",
+			"table": "TABLES"
+		}
+	}
+}
