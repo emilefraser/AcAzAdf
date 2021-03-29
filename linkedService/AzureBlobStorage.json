@@ -1,11 +1,13 @@
 {
 	"name": "AzureBlobStorage",
+	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"description": "Linked Service to Azure Blob Storage",
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
-			"connectionString": {
+			"connectionString": "DefaultEndpointsProtocol=https;AccountName=acazsancustblob;EndpointSuffix=core.windows.net;",
+			"accountKey": {
 				"type": "AzureKeyVaultSecret",
 				"store": {
 					"referenceName": "AzureKeyVault",
@@ -14,6 +16,5 @@
 				"secretName": "acazsancustblob"
 			}
 		}
-	},
-	"type": "Microsoft.DataFactory/factories/linkedservices"
+	}
 }
