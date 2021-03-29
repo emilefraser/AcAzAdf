@@ -3,12 +3,6 @@
 	"type": "Microsoft.DataFactory/factories/linkedservices",
 	"properties": {
 		"description": "Linked Service to Azure Blob Storage",
-		"parameters": {
-			"vaultBaseUrl": {
-				"type": "string",
-				"defaultValue": "https://acazeukeyvault.vault.azure.net"
-			}
-		},
 		"annotations": [],
 		"type": "AzureBlobStorage",
 		"typeProperties": {
