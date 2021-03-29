@@ -1,0 +1,18 @@
+{
+	"name": "SqlServer_OnPremises",
+	"properties": {
+		"description": "Microsoft SQL Server Linked Service to an On-Premises instance",
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "acaznevm"
+			}
+		}
+	}
+}
