@@ -3,7 +3,16 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"vaultBaseUrl": "https://acazeukeyvault.vault.azure.net"
+			}
+		},
+		"parameters": {
+			"vaultBaseUrl": {
+				"type": "string",
+				"defaultValue": "https://acazeukeyvault.vault.azure.net"
+			}
 		},
 		"folder": {
 			"name": "AzureBlobStorage"
@@ -12,8 +21,7 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation",
-				"container": "saps4hana"
+				"type": "AzureBlobStorageLocation"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
