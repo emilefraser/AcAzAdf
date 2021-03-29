@@ -1,5 +1,5 @@
 {
-	"name": "Placeholder Denitialize_copy2",
+	"name": "Placeholder Denitialize_copy11",
 	"properties": {
 		"activities": [
 			{
@@ -13,7 +13,7 @@
 			}
 		],
 		"folder": {
-			"name": "18_Notify"
+			"name": "8_Stage"
 		},
 		"annotations": [],
 		"lastPublishTime": "2020-12-14T13:15:11Z"
