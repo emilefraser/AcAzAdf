@@ -21,7 +21,9 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation"
+				"type": "AzureBlobStorageLocation",
+				"folderPath": "vaultspeed",
+				"container": "acazsancustblob"
 			},
 			"columnDelimiter": ",",
 			"escapeChar": "\\",
