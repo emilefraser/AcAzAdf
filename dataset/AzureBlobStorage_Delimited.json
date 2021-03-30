@@ -3,7 +3,24 @@
 	"properties": {
 		"linkedServiceName": {
 			"referenceName": "AzureBlobStorage",
-			"type": "LinkedServiceReference"
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/"
+			}
+		},
+		"parameters": {
+			"baseUrl": {
+				"type": "string",
+				"defaultValue": "https://AcAzEuKeyVault.vault.azure.net/"
+			},
+			"columnDelimiter": {
+				"type": "string",
+				"defaultValue": ";"
+			},
+			"rowDelimiter": {
+				"type": "string",
+				"defaultValue": "\\r\\n"
+			}
 		},
 		"folder": {
 			"name": "AzureBlobStorage"
@@ -12,9 +29,11 @@
 		"type": "DelimitedText",
 		"typeProperties": {
 			"location": {
-				"type": "AzureBlobStorageLocation"
+				"type": "AzureBlobStorageLocation",
+				"fileName": "VaultspeedProcedureMap.csv",
+				"container": "vaultspeed"
 			},
-			"columnDelimiter": ",",
+			"columnDelimiter": ";",
 			"escapeChar": "\\",
 			"firstRowAsHeader": true,
 			"quoteChar": "\""
