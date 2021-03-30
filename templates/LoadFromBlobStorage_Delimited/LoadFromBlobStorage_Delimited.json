@@ -1,0 +1,1390 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name"
+		},
+		"Azure_BlobStorage": {
+			"type": "string"
+		},
+		"saec_powerbi_dev": {
+			"type": "string"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/BlobStorageLoad_Delimited')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Blob storage load of Delimited file",
+				"activities": [
+					{
+						"name": "BlobToSqlLoad_Delimited",
+						"description": "Delimited Load from Azure Blob Storage to Sql Server",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": false,
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings"
+								}
+							},
+							"sink": {
+								"type": "AzureSqlSink",
+								"preCopyScript": "TRUNCATE TABLE [lnd].[SapAriba_ProcurementContractWorkspaces_PROD_Staged]",
+								"tableOption": "autoCreate",
+								"disableMetricsCollection": false
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "ContractId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ContractId",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Last Published",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Last_Published",
+											"type": "Byte"
+										}
+									},
+									{
+										"source": {
+											"name": "Title",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Title",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Description",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Description",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ContractStatus",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ContractStatus",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Version",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Version",
+											"type": "Int32"
+										}
+									},
+									{
+										"source": {
+											"name": "Access Control",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Access_Control",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Owner",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Owner",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "TimeUpdated",
+											"type": "String"
+										},
+										"sink": {
+											"name": "TimeUpdated",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "LastModifiedBy",
+											"type": "String"
+										},
+										"sink": {
+											"name": "LastModifiedBy",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Predecessor Project",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Predecessor_Project",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Commodity",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Commodity",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "HierarchicalType",
+											"type": "String"
+										},
+										"sink": {
+											"name": "HierarchicalType",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Regions",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Regions",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ParentAgreement",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ParentAgreement",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Clients",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Clients",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "SupplierName",
+											"type": "String"
+										},
+										"sink": {
+											"name": "SupplierName",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Affected Parties IDs",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Affected_Parties_IDs",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Affected Parties",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Affected_Parties",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "SupplierID",
+											"type": "String"
+										},
+										"sink": {
+											"name": "SupplierID",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Amount_Currency",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Amount_Currency",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Amount_Amount",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Amount_Amount",
+											"type": "Decimal"
+										}
+									},
+									{
+										"source": {
+											"name": "ContractType",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ContractType",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "EffectiveDate",
+											"type": "String"
+										},
+										"sink": {
+											"name": "EffectiveDate",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "AgreementDate",
+											"type": "String"
+										},
+										"sink": {
+											"name": "AgreementDate",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ExpirationDate",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ExpirationDate",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "IsEvergreen",
+											"type": "String"
+										},
+										"sink": {
+											"name": "IsEvergreen",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "InternalId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "InternalId",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "RelatedId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "RelatedId",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "AmendmentReason",
+											"type": "String"
+										},
+										"sink": {
+											"name": "AmendmentReason",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "AmendmentReasonComment",
+											"type": "String"
+										},
+										"sink": {
+											"name": "AmendmentReasonComment",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "IsContractRequest",
+											"type": "String"
+										},
+										"sink": {
+											"name": "IsContractRequest",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "CreateDate",
+											"type": "String"
+										},
+										"sink": {
+											"name": "CreateDate",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "BaseLanguage",
+											"type": "String"
+										},
+										"sink": {
+											"name": "BaseLanguage",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "Test Project",
+											"type": "String"
+										},
+										"sink": {
+											"name": "Test_Project",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ParentAgreement ContractId",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ParentAgreement_ContractId",
+											"type": "String"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "dataset_AzureBlobStorage_Delimited",
+								"type": "DatasetReference"
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "dataset_saec_powerbi_dev",
+								"type": "DatasetReference",
+								"parameters": {
+									"EntityName": {
+										"value": "SapAriba_ProcurementContractWorkspaces_PROD_Staged",
+										"type": "Expression"
+									},
+									"SchemaName": "lnd"
+								}
+							}
+						]
+					}
+				],
+				"folder": {
+					"name": "Purchasing & Inventory/Utility"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-03-23T13:37:14Z"
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/dataset_AzureBlobStorage_Delimited')]",
+				"[concat(variables('factoryId'), '/datasets/dataset_saec_powerbi_dev')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataset_AzureBlobStorage_Delimited')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "[parameters('Azure_BlobStorage')]",
+					"type": "LinkedServiceReference"
+				},
+				"folder": {
+					"name": "AzureBlobStorage/Procurement"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"fileName": "result.csv",
+						"folderPath": "sap_ariba",
+						"container": "saec"
+					},
+					"columnDelimiter": ",",
+					"escapeChar": "\\",
+					"firstRowAsHeader": true,
+					"quoteChar": "\""
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/dataset_saec_powerbi_dev')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Generic Destination Table for the SQL Azure Server, will be changed to be dynamic based on the values the foreach loop passes",
+				"linkedServiceName": {
+					"referenceName": "[parameters('saec_powerbi_dev')]",
+					"type": "LinkedServiceReference"
+				},
+				"parameters": {
+					"EntityName": {
+						"type": "string",
+						"defaultValue": "EntityName"
+					},
+					"SchemaName": {
+						"type": "string",
+						"defaultValue": "dbo"
+					}
+				},
+				"folder": {
+					"name": "Purchasing/3_Load"
+				},
+				"annotations": [],
+				"type": "AzureSqlTable",
+				"schema": [
+					{
+						"name": "MANDT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EBELN",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BUKRS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BSTYP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BSART",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BSAKZ",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LOEKZ",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STATU",
+						"type": "nvarchar"
+					},
+					{
+						"name": "AEDAT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ERNAM",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LASTCHANGEDATETIME",
+						"type": "decimal",
+						"precision": 27,
+						"scale": 7
+					},
+					{
+						"name": "PINCR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LPONR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LIFNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SPRAS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZTERM",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZBD1T",
+						"type": "decimal",
+						"precision": 3,
+						"scale": 0
+					},
+					{
+						"name": "ZBD2T",
+						"type": "decimal",
+						"precision": 3,
+						"scale": 0
+					},
+					{
+						"name": "ZBD3T",
+						"type": "decimal",
+						"precision": 3,
+						"scale": 0
+					},
+					{
+						"name": "ZBD1P",
+						"type": "decimal",
+						"precision": 6,
+						"scale": 3
+					},
+					{
+						"name": "ZBD2P",
+						"type": "decimal",
+						"precision": 6,
+						"scale": 3
+					},
+					{
+						"name": "EKORG",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EKGRP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "WAERS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "WKURS",
+						"type": "decimal",
+						"precision": 12,
+						"scale": 5
+					},
+					{
+						"name": "KUFIX",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BEDAT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KDATB",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KDATE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BWBDT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ANGDT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BNDDT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "GWLDT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "AUSNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ANGNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "IHRAN",
+						"type": "nvarchar"
+					},
+					{
+						"name": "IHREZ",
+						"type": "nvarchar"
+					},
+					{
+						"name": "VERKF",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TELF1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LLIEF",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KUNNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KONNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ABGRU",
+						"type": "nvarchar"
+					},
+					{
+						"name": "AUTLF",
+						"type": "nvarchar"
+					},
+					{
+						"name": "WEAKT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "RESWK",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LBLIF",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INCO1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INCO2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KTWRT",
+						"type": "decimal",
+						"precision": 20,
+						"scale": 2
+					},
+					{
+						"name": "SUBMI",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KNUMV",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KALSM",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STAFO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LIFRE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EXNUM",
+						"type": "nvarchar"
+					},
+					{
+						"name": "UNSEZ",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LOGSY",
+						"type": "nvarchar"
+					},
+					{
+						"name": "UPINC",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STAKO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FRGGR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FRGSX",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FRGKE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FRGZU",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FRGRL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LANDS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LPHIS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ADRNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STCEG_L",
+						"type": "nvarchar"
+					},
+					{
+						"name": "STCEG",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ABSGR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ADDNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KORNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "MEMORY",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PROCSTAT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "RLWRT",
+						"type": "decimal",
+						"precision": 20,
+						"scale": 2
+					},
+					{
+						"name": "REVNO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SCMPROC",
+						"type": "nvarchar"
+					},
+					{
+						"name": "REASON_CODE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "MEMORYTYPE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "RETTP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "RETPC",
+						"type": "decimal",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "DPTYP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DPPCT",
+						"type": "decimal",
+						"precision": 6,
+						"scale": 2
+					},
+					{
+						"name": "DPAMT",
+						"type": "decimal",
+						"precision": 14,
+						"scale": 2
+					},
+					{
+						"name": "DPDAT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "MSR_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "HIERARCHY_EXISTS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "THRESHOLD_EXISTS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LEGAL_CONTRACT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DESCRIPTION",
+						"type": "nvarchar"
+					},
+					{
+						"name": "RELEASE_DATE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "VSART",
+						"type": "nvarchar"
+					},
+					{
+						"name": "HANDOVERLOC",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SHIPCOND",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INCOV",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INCO2_L",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INCO3_L",
+						"type": "nvarchar"
+					},
+					{
+						"name": "GRWCU",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INTRA_REL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "INTRA_EXCL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "QTN_ERLST_SUBMSN_DATE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FOLLOWON_DOC_CAT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FOLLOWON_DOC_TYPE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DUMMY_EKKO_INCL_EEW_PS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EXTERNALSYSTEM",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EXTERNALREFERENCEID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EXT_REV_TMSTMP",
+						"type": "decimal",
+						"precision": 27,
+						"scale": 7
+					},
+					{
+						"name": "ISEOPBLOCKED",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ISAGED",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FORCE_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FORCE_CNT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "RELOC_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "RELOC_SEQ_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "SOURCE_LOGSYS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FSH_TRANSACTION",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FSH_ITEM_GROUP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FSH_VAS_LAST_ITEM",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FSH_OS_STG_CHANGE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIEXGNUM",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIEXGTYP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIAEVGTYPE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIPIPEVAL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_LIFNR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_DCITYC",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_DCOUNC",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_DREGIO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_DLAND1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_OCITYC",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_OCOUNC",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_OREGIO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_OLAND1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_PORGIN",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_PDESTN",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_PTRIP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_PBATCH",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_MOT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_AORGIN",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_ADESTN",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIC_TRUCKN",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OIA_BASELO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OID_EXTBOL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OID_MISCDL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "TMS_REF_UUID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZZDUMMY",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZZDATA1",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZZDATA2",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZZDATA3",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZZDATA4",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZAPCGK",
+						"type": "nvarchar"
+					},
+					{
+						"name": "APCGK_EXTEND",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZBAS_DATE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZADATTYP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZSTART_DAT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "Z_DEV",
+						"type": "decimal",
+						"precision": 7,
+						"scale": 3
+					},
+					{
+						"name": "ZINDANX",
+						"type": "nvarchar"
+					},
+					{
+						"name": "ZLIMIT_DAT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "NUMERATOR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "HASHCAL_BDAT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "HASHCAL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "NEGATIVE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "HASHCAL_EXISTS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KNOWN_INDEX",
+						"type": "nvarchar"
+					},
+					{
+						"name": "POSTAT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "VZSKZ",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FSH_SNST_STATUS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PROCE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CONC",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CONT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "COMP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OUTR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DESP",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DESP_DAT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DESP_CARGO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PARE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PARE_DAT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PARE_CARGO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PFM_CONTRACT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "POHF_TYPE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EQ_EINDT",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EQ_WERKS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FIXPO",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EKGRP_ALLOW",
+						"type": "nvarchar"
+					},
+					{
+						"name": "WERKS_ALLOW",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CONTRACT_ALLOW",
+						"type": "nvarchar"
+					},
+					{
+						"name": "PSTYP_ALLOW",
+						"type": "nvarchar"
+					},
+					{
+						"name": "FIXPO_ALLOW",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KEY_ID_ALLOW",
+						"type": "nvarchar"
+					},
+					{
+						"name": "AUREL_ALLOW",
+						"type": "nvarchar"
+					},
+					{
+						"name": "DELPER_ALLOW",
+						"type": "nvarchar"
+					},
+					{
+						"name": "EINDT_ALLOW",
+						"type": "nvarchar"
+					},
+					{
+						"name": "LTSNR_ALLOW",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OTB_LEVEL",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OTB_COND_TYPE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "KEY_ID",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OTB_VALUE",
+						"type": "decimal",
+						"precision": 23,
+						"scale": 2
+					},
+					{
+						"name": "OTB_CURR",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OTB_RES_VALUE",
+						"type": "decimal",
+						"precision": 22,
+						"scale": 2
+					},
+					{
+						"name": "OTB_SPEC_VALUE",
+						"type": "decimal",
+						"precision": 22,
+						"scale": 2
+					},
+					{
+						"name": "SPR_RSN_PROFILE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "BUDG_TYPE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OTB_STATUS",
+						"type": "nvarchar"
+					},
+					{
+						"name": "OTB_REASON",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CHECK_TYPE",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CON_OTB_REQ",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CON_PREBOOK_LEV",
+						"type": "nvarchar"
+					},
+					{
+						"name": "CON_DISTR_LEV",
+						"type": "nvarchar"
+					}
+				],
+				"typeProperties": {
+					"schema": {
+						"value": "@dataset().SchemaName",
+						"type": "Expression"
+					},
+					"table": {
+						"value": "@dataset().EntityName",
+						"type": "Expression"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
