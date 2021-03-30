@@ -19,7 +19,15 @@
 			},
 			"rowDelimiter": {
 				"type": "string",
-				"defaultValue": "\\r\\n"
+				"defaultValue": "\\n"
+			},
+			"escapeCharacter": {
+				"type": "string",
+				"defaultValue": "\\"
+			},
+			"quoteCharacter": {
+				"type": "string",
+				"defaultValue": "\""
 			}
 		},
 		"folder": {
@@ -33,10 +41,23 @@
 				"fileName": "VaultspeedProcedureMap.csv",
 				"container": "vaultspeed"
 			},
-			"columnDelimiter": ";",
-			"escapeChar": "\\",
+			"columnDelimiter": {
+				"value": "@dataset().columnDelimiter",
+				"type": "Expression"
+			},
+			"rowDelimiter": {
+				"value": "@dataset().rowDelimiter",
+				"type": "Expression"
+			},
+			"escapeChar": {
+				"value": "@dataset().escapeCharacter",
+				"type": "Expression"
+			},
 			"firstRowAsHeader": true,
-			"quoteChar": "\""
+			"quoteChar": {
+				"value": "@dataset().quoteCharacter",
+				"type": "Expression"
+			}
 		},
 		"schema": []
 	},
