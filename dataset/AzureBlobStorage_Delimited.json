@@ -34,7 +34,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobStorageLocation",
-				"fileName": "VaultspeedProcedureMap.csv",
+				"fileName": "VaultspeedObject.csv",
 				"container": "vaultspeed"
 			},
 			"columnDelimiter": {
