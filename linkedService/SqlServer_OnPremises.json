@@ -1,0 +1,31 @@
+{
+	"name": "SqlServer_OnPremises",
+	"properties": {
+		"description": "Sql Server Linked Service to on premises server",
+		"parameters": {
+			"baseUrl": {
+				"type": "string",
+				"defaultValue": "https://AcAzEuKeyVault.vault.azure.net/"
+			}
+		},
+		"annotations": [],
+		"type": "SqlServer",
+		"typeProperties": {
+			"connectionString": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/"
+					}
+				},
+				"secretName": "acaznevm"
+			}
+		},
+		"connectVia": {
+			"referenceName": "AcAzNeVmIntegrationRuntime",
+			"type": "IntegrationRuntimeReference"
+		}
+	}
+}
