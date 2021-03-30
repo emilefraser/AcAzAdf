@@ -17,10 +17,6 @@
 				"type": "string",
 				"defaultValue": ";"
 			},
-			"rowDelimiter": {
-				"type": "string",
-				"defaultValue": "\\n"
-			},
 			"escapeCharacter": {
 				"type": "string",
 				"defaultValue": "\\"
