@@ -1,0 +1,42 @@
+{
+	"name": "SqlServer_OnPremises",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "SqlServer_OnPremises",
+			"type": "LinkedServiceReference",
+			"parameters": {
+				"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/"
+			}
+		},
+		"parameters": {
+			"baseURL": {
+				"type": "string",
+				"defaultValue": "https://AcAzEuKeyVault.vault.azure.net/"
+			},
+			"TargetSchema": {
+				"type": "string",
+				"defaultValue": "dm"
+			},
+			"TargetTable": {
+				"type": "string",
+				"defaultValue": "VaultspeedObject"
+			}
+		},
+		"folder": {
+			"name": "Database"
+		},
+		"annotations": [],
+		"type": "SqlServerTable",
+		"schema": [],
+		"typeProperties": {
+			"schema": {
+				"value": "@dataset().TargetSchema",
+				"type": "Expression"
+			},
+			"table": {
+				"value": "@dataset().TargetTable",
+				"type": "Expression"
+			}
+		}
+	}
+}
