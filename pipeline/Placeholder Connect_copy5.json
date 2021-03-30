@@ -1,0 +1,22 @@
+{
+	"name": "Placeholder Connect_copy5",
+	"properties": {
+		"activities": [
+			{
+				"name": "Wait1",
+				"type": "Wait",
+				"dependsOn": [],
+				"userProperties": [],
+				"typeProperties": {
+					"waitTimeInSeconds": 1
+				}
+			}
+		],
+		"folder": {
+			"name": "5_PreExtract"
+		},
+		"annotations": [],
+		"lastPublishTime": "2020-12-14T13:15:13Z"
+	},
+	"type": "Microsoft.DataFactory/factories/pipelines"
+}
