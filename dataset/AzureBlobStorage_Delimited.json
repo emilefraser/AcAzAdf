@@ -45,10 +45,6 @@
 				"value": "@dataset().columnDelimiter",
 				"type": "Expression"
 			},
-			"rowDelimiter": {
-				"value": "@dataset().rowDelimiter",
-				"type": "Expression"
-			},
 			"escapeChar": {
 				"value": "@dataset().escapeCharacter",
 				"type": "Expression"
