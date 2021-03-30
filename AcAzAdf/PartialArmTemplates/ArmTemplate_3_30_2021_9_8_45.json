@@ -1,0 +1,75 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "AcAzAdf"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureKeyVault')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Linked Service for Azure Key Vault",
+				"parameters": {
+					"baseUrl": {
+						"type": "String",
+						"defaultValue": "https://AcAzEuKeyVault.vault.azure.net/"
+					}
+				},
+				"annotations": [
+					"keyvault",
+					"acaz"
+				],
+				"type": "AzureKeyVault",
+				"typeProperties": {
+					"baseUrl": "@{linkedService().baseUrl}"
+				}
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/SqlServer_OnPremises')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Sql Server Linked Service to on premises server",
+				"parameters": {
+					"baseUrl": {
+						"type": "string",
+						"defaultValue": "https://AcAzEuKeyVault.vault.azure.net/"
+					}
+				},
+				"annotations": [],
+				"type": "SqlServer",
+				"typeProperties": {
+					"connectionString": {
+						"type": "AzureKeyVaultSecret",
+						"store": {
+							"referenceName": "AzureKeyVault",
+							"type": "LinkedServiceReference",
+							"parameters": {
+								"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/"
+							}
+						},
+						"secretName": "acaznevm"
+					}
+				},
+				"connectVia": {
+					"referenceName": "AcAzNeVmIntegrationRuntime",
+					"type": "IntegrationRuntimeReference"
+				}
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/linkedServices/AzureKeyVault')]"
+			]
+		}
+	]
+}

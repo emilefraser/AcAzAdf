@@ -1,0 +1,42 @@
+{
+	"$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"value": "AcAzAdf"
+		},
+		"AzureBlobStorage_connectionString": {
+			"value": ""
+		},
+		"AzureSqlDatabase_connectionString": {
+			"value": ""
+		},
+		"ls_MachineLearning_servicePrincipalKey": {
+			"value": ""
+		},
+		"AzureKeyVault_properties_typeProperties_baseUrl": {
+			"value": "@{linkedService().baseUrl}"
+		},
+		"ls_MachineLearning_properties_typeProperties_subscriptionId": {
+			"value": "87cfcf1d-a755-46d8-9fad-1038ad31fa27"
+		},
+		"ls_MachineLearning_properties_typeProperties_resourceGroupName": {
+			"value": "MLService"
+		},
+		"ls_MachineLearning_properties_typeProperties_servicePrincipalId": {
+			"value": "2e126bef-c545-4f28-8b62-ddfaf854b0ad"
+		},
+		"ls_MachineLearning_properties_typeProperties_tenant": {
+			"value": "34aa038a-43ff-4f1c-8315-4d477a9cfe29"
+		},
+		"SqlServer_OnPremises_properties_typeProperties_connectionString_secretName": {
+			"value": "acaznevm"
+		},
+		"containerUri": {
+			"value": ""
+		},
+		"containerSasToken": {
+			"value": ""
+		}
+	}
+}
