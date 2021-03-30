@@ -4,7 +4,7 @@
 		"description": "Blob storage load of Delimited file",
 		"activities": [
 			{
-				"name": "BlobToSqlLoad_Delimited",
+				"name": "Blob To SqlServer Load",
 				"description": "Delimited Load from Azure Blob Storage to Sql Server",
 				"type": "Copy",
 				"dependsOn": [],
@@ -29,10 +29,8 @@
 						}
 					},
 					"sink": {
-						"type": "AzureSqlSink",
-						"preCopyScript": "TRUNCATE TABLE [lnd].[SapAriba_ProcurementContractWorkspaces_PROD_Staged]",
-						"tableOption": "autoCreate",
-						"disableMetricsCollection": false
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -415,14 +413,12 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "dataset_saec_powerbi_dev",
+						"referenceName": "SqlServer_OnPremises",
 						"type": "DatasetReference",
 						"parameters": {
-							"EntityName": {
-								"value": "SapAriba_ProcurementContractWorkspaces_PROD_Staged",
-								"type": "Expression"
-							},
-							"SchemaName": "lnd"
+							"baseURL": "https://AcAzEuKeyVault.vault.azure.net/",
+							"TargetSchema": "dm",
+							"TargetTable": "VaultspeedObject"
 						}
 					}
 				]
