@@ -38,7 +38,7 @@
 					},
 					"sink": {
 						"type": "SqlServerSink",
-						"preCopyScript": "TRUNCATE TABLE dbo.VaultSpeedLineageObject_Staged"
+						"preCopyScript": "TRUNCATE TABLE dm.VaultSpeedLineageObject_Staged"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -295,7 +295,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"baseURL": "https://AcAzEuKeyVault.vault.azure.net/",
-							"TargetSchema": "dbo",
+							"TargetSchema": "dm",
 							"TargetTable": "VaultSpeedLineageObject_Staged"
 						}
 					}
