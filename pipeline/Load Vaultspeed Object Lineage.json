@@ -1,0 +1,70 @@
+{
+	"name": "Load Vaultspeed Object Lineage",
+	"properties": {
+		"description": "Loads Vaultspeed Object Lineage",
+		"activities": [
+			{
+				"name": "Blob To SqlServer Load",
+				"description": "Delimited Load from Azure Blob Storage to Sql Server",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "0.00:30:00",
+					"retry": 1,
+					"retryIntervalInSeconds": 60,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "DelimitedTextSource",
+						"storeSettings": {
+							"type": "AzureBlobStorageReadSettings",
+							"recursive": true,
+							"wildcardFileName": "*.csv",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "DelimitedTextReadSettings",
+							"skipLineCount": 1
+						}
+					},
+					"sink": {
+						"type": "SqlServerSink",
+						"tableOption": "autoCreate"
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "AzureBlobStorage_Delimited_Blob",
+						"type": "DatasetReference",
+						"parameters": {
+							"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/",
+							"columnDelimiter": ";",
+							"escapeCharacter": "\\",
+							"quoteCharacter": "\""
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "SqlServer_OnPremises",
+						"type": "DatasetReference",
+						"parameters": {
+							"baseURL": "https://AcAzEuKeyVault.vault.azure.net/",
+							"TargetSchema": "dm",
+							"TargetTable": "VaultspeedObject2"
+						}
+					}
+				]
+			}
+		],
+		"folder": {
+			"name": "13_Load"
+		},
+		"annotations": [],
+		"lastPublishTime": "2021-03-23T13:37:14Z"
+	}
+}
