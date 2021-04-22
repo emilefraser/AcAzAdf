@@ -21,20 +21,257 @@
 						"type": "DelimitedTextSource",
 						"storeSettings": {
 							"type": "AzureBlobStorageReadSettings",
-							"recursive": true,
+							"recursive": false,
 							"wildcardFileName": "*.csv",
 							"enablePartitionDiscovery": false
 						},
 						"formatSettings": {
 							"type": "DelimitedTextReadSettings",
-							"skipLineCount": 1
+							"skipLineCount": 0
 						}
 					},
 					"sink": {
 						"type": "SqlServerSink",
 						"preCopyScript": "TRUNCATE TABLE dbo.VaultSpeedLineageObject_Staged"
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"name": "AFB_DV(AFB_DataVault)-AFB_DV_V9(9)",
+									"type": "String"
+								},
+								"sink": {
+									"name": "datavault",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SAGE300 - Changed O Entities and added Excel Ref(11)",
+									"type": "String"
+								},
+								"sink": {
+									"name": "src_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SAGE3002",
+									"type": "String"
+								},
+								"sink": {
+									"name": "src_name_in_bk",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SAGE3003",
+									"type": "String"
+								},
+								"sink": {
+									"name": "record_src_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SAGE3004",
+									"type": "String"
+								},
+								"sink": {
+									"name": "src_short_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "VS_SAGE300",
+									"type": "String"
+								},
+								"sink": {
+									"name": "src_physical_schema",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INCR_SAGE300",
+									"type": "String"
+								},
+								"sink": {
+									"name": "cdc_physical_schema",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "INI_SAGE300",
+									"type": "String"
+								},
+								"sink": {
+									"name": "ini_physical_schema",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "STAGE_SAGE300",
+									"type": "String"
+								},
+								"sink": {
+									"name": "stg_physical_schema",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "RAW",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dv_physical_schema",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BIZ",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bv_physical_schema",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "dbo_GLABRX11",
+									"type": "String"
+								},
+								"sink": {
+									"name": "src_table_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "dbo_GLABRX12",
+									"type": "String"
+								},
+								"sink": {
+									"name": "stg_table_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GeneralLedgerStructure13",
+									"type": "String"
+								},
+								"sink": {
+									"name": "stg_table_short_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "GeneralLedgerStructure14",
+									"type": "String"
+								},
+								"sink": {
+									"name": "stg_table_abbreviated_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "SAGE300.GeneralLedgerStructure",
+									"type": "String"
+								},
+								"sink": {
+									"name": "record_src_value",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LINKSAT_SAGE300_GeneralLedgerStructure_GeneralLedgerSegment_ABRKID1016",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dv_table_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LKS",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dv_table_type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "BVV",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bv_table_type",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "Business View",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bv_table_type_description",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LINKSAT_SAGE300_GeneralLedgerStructure_GeneralLedgerSegment_ABRKID1020",
+									"type": "String"
+								},
+								"sink": {
+									"name": "bv_table_name",
+									"type": "String"
+								}
+							},
+							{
+								"source": {
+									"name": "LINK_GeneralLedgerStructure_GeneralLedgerSegment_ABRKID10",
+									"type": "String"
+								},
+								"sink": {
+									"name": "dv_linked_tables",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "FileName",
+									"type": "String"
+								}
+							},
+							{
+								"sink": {
+									"name": "CreatedDT",
+									"type": "DateTime"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
