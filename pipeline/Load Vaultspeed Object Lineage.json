@@ -38,7 +38,7 @@
 					},
 					"sink": {
 						"type": "SqlServerSink",
-						"preCopyScript": "TRUNCATE TABLE dm.VaultSpeedLineageObject_Staged"
+						"preCopyScript": "TRUNCATE TABLE DC.VaultSpeedLineageObject_Staged"
 					},
 					"enableStaging": false,
 					"translator": {
@@ -295,7 +295,7 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"baseURL": "https://AcAzEuKeyVault.vault.azure.net/",
-							"TargetSchema": "dm",
+							"TargetSchema": "DC",
 							"TargetTable": "VaultSpeedLineageObject_Staged"
 						}
 					}
@@ -321,7 +321,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dm].[MergeVaultSpeedObjectRelation]"
+					"storedProcedureName": "[DC].[MergeVaultSpeedObjectRelation]"
 				},
 				"linkedServiceName": {
 					"referenceName": "SqlServer_OnPremises",
