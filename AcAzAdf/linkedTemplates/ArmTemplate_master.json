@@ -23,6 +23,10 @@
 			"type": "string",
 			"defaultValue": "@{linkedService().baseUrl}"
 		},
+		"SqlServer_OnPremises_properties_typeProperties_connectionString_secretName": {
+			"type": "string",
+			"defaultValue": "acaznevm"
+		},
 		"ls_MachineLearning_properties_typeProperties_subscriptionId": {
 			"type": "string",
 			"defaultValue": "87cfcf1d-a755-46d8-9fad-1038ad31fa27"
@@ -38,10 +42,6 @@
 		"ls_MachineLearning_properties_typeProperties_tenant": {
 			"type": "string",
 			"defaultValue": "34aa038a-43ff-4f1c-8315-4d477a9cfe29"
-		},
-		"SqlServer_OnPremises_properties_typeProperties_connectionString_secretName": {
-			"type": "string",
-			"defaultValue": "acaznevm"
 		},
 		"containerUri": {
 			"type": "string",
@@ -69,30 +69,6 @@
 				"parameters": {
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
-					},
-					"AzureBlobStorage_connectionString": {
-						"value": "[parameters('AzureBlobStorage_connectionString')]"
-					},
-					"ls_MachineLearning_servicePrincipalKey": {
-						"value": "[parameters('ls_MachineLearning_servicePrincipalKey')]"
-					},
-					"AzureSqlDatabase_connectionString": {
-						"value": "[parameters('AzureSqlDatabase_connectionString')]"
-					},
-					"AzureKeyVault_properties_typeProperties_baseUrl": {
-						"value": "[parameters('AzureKeyVault_properties_typeProperties_baseUrl')]"
-					},
-					"ls_MachineLearning_properties_typeProperties_subscriptionId": {
-						"value": "[parameters('ls_MachineLearning_properties_typeProperties_subscriptionId')]"
-					},
-					"ls_MachineLearning_properties_typeProperties_resourceGroupName": {
-						"value": "[parameters('ls_MachineLearning_properties_typeProperties_resourceGroupName')]"
-					},
-					"ls_MachineLearning_properties_typeProperties_servicePrincipalId": {
-						"value": "[parameters('ls_MachineLearning_properties_typeProperties_servicePrincipalId')]"
-					},
-					"ls_MachineLearning_properties_typeProperties_tenant": {
-						"value": "[parameters('ls_MachineLearning_properties_typeProperties_tenant')]"
 					}
 				}
 			},
@@ -112,6 +88,30 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"ls_MachineLearning_servicePrincipalKey": {
+						"value": "[parameters('ls_MachineLearning_servicePrincipalKey')]"
+					},
+					"AzureBlobStorage_connectionString": {
+						"value": "[parameters('AzureBlobStorage_connectionString')]"
+					},
+					"AzureSqlDatabase_connectionString": {
+						"value": "[parameters('AzureSqlDatabase_connectionString')]"
+					},
+					"AzureKeyVault_properties_typeProperties_baseUrl": {
+						"value": "[parameters('AzureKeyVault_properties_typeProperties_baseUrl')]"
+					},
+					"ls_MachineLearning_properties_typeProperties_subscriptionId": {
+						"value": "[parameters('ls_MachineLearning_properties_typeProperties_subscriptionId')]"
+					},
+					"ls_MachineLearning_properties_typeProperties_resourceGroupName": {
+						"value": "[parameters('ls_MachineLearning_properties_typeProperties_resourceGroupName')]"
+					},
+					"ls_MachineLearning_properties_typeProperties_servicePrincipalId": {
+						"value": "[parameters('ls_MachineLearning_properties_typeProperties_servicePrincipalId')]"
+					},
+					"ls_MachineLearning_properties_typeProperties_tenant": {
+						"value": "[parameters('ls_MachineLearning_properties_typeProperties_tenant')]"
+					},
 					"SqlServer_OnPremises_properties_typeProperties_connectionString_secretName": {
 						"value": "[parameters('SqlServer_OnPremises_properties_typeProperties_connectionString_secretName')]"
 					}
@@ -119,6 +119,26 @@
 			},
 			"dependsOn": [
 				"[resourceId('Microsoft.Resources/deployments', 'AcAzAdf_ArmTemplate_0')]"
+			]
+		},
+		{
+			"name": "AcAzAdf_ArmTemplate_2",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_2.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					}
+				}
+			},
+			"dependsOn": [
+				"[resourceId('Microsoft.Resources/deployments', 'AcAzAdf_ArmTemplate_1')]"
 			]
 		}
 	]

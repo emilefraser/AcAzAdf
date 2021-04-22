@@ -17,6 +17,9 @@
 		"AzureKeyVault_properties_typeProperties_baseUrl": {
 			"value": "@{linkedService().baseUrl}"
 		},
+		"SqlServer_OnPremises_properties_typeProperties_connectionString_secretName": {
+			"value": "acaznevm"
+		},
 		"ls_MachineLearning_properties_typeProperties_subscriptionId": {
 			"value": "87cfcf1d-a755-46d8-9fad-1038ad31fa27"
 		},
@@ -28,9 +31,6 @@
 		},
 		"ls_MachineLearning_properties_typeProperties_tenant": {
 			"value": "34aa038a-43ff-4f1c-8315-4d477a9cfe29"
-		},
-		"SqlServer_OnPremises_properties_typeProperties_connectionString_secretName": {
-			"value": "acaznevm"
 		}
 	}
 }
