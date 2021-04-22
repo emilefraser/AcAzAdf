@@ -321,7 +321,7 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[MergeVaultSpeedObjectRelation]"
+					"storedProcedureName": "[dm].[MergeVaultSpeedObjectRelation]"
 				},
 				"linkedServiceName": {
 					"referenceName": "SqlServer_OnPremises",
