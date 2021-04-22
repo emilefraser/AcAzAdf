@@ -46,7 +46,7 @@
 						"mappings": [
 							{
 								"source": {
-									"name": "AFB_DV(AFB_DataVault)-AFB_DV_V9(9)",
+									"name": "datavault",
 									"type": "String"
 								},
 								"sink": {
@@ -56,7 +56,7 @@
 							},
 							{
 								"source": {
-									"name": "SAGE300 - Changed O Entities and added Excel Ref(11)",
+									"name": "src_name",
 									"type": "String"
 								},
 								"sink": {
@@ -66,7 +66,7 @@
 							},
 							{
 								"source": {
-									"name": "SAGE3002",
+									"name": "src_name_in_bk",
 									"type": "String"
 								},
 								"sink": {
@@ -76,7 +76,7 @@
 							},
 							{
 								"source": {
-									"name": "SAGE3003",
+									"name": "record_src_name",
 									"type": "String"
 								},
 								"sink": {
@@ -86,7 +86,7 @@
 							},
 							{
 								"source": {
-									"name": "SAGE3004",
+									"name": "src_short_name",
 									"type": "String"
 								},
 								"sink": {
@@ -96,7 +96,7 @@
 							},
 							{
 								"source": {
-									"name": "VS_SAGE300",
+									"name": "src_physical_schema",
 									"type": "String"
 								},
 								"sink": {
@@ -106,7 +106,7 @@
 							},
 							{
 								"source": {
-									"name": "INCR_SAGE300",
+									"name": "cdc_physical_schema",
 									"type": "String"
 								},
 								"sink": {
@@ -116,7 +116,7 @@
 							},
 							{
 								"source": {
-									"name": "INI_SAGE300",
+									"name": "ini_physical_schema",
 									"type": "String"
 								},
 								"sink": {
@@ -126,7 +126,7 @@
 							},
 							{
 								"source": {
-									"name": "STAGE_SAGE300",
+									"name": "stg_physical_schema",
 									"type": "String"
 								},
 								"sink": {
@@ -136,7 +136,7 @@
 							},
 							{
 								"source": {
-									"name": "RAW",
+									"name": "dv_physical_schema",
 									"type": "String"
 								},
 								"sink": {
@@ -146,7 +146,7 @@
 							},
 							{
 								"source": {
-									"name": "BIZ",
+									"name": "bv_physical_schema",
 									"type": "String"
 								},
 								"sink": {
@@ -156,7 +156,7 @@
 							},
 							{
 								"source": {
-									"name": "dbo_GLABRX11",
+									"name": "src_table_name",
 									"type": "String"
 								},
 								"sink": {
@@ -166,7 +166,7 @@
 							},
 							{
 								"source": {
-									"name": "dbo_GLABRX12",
+									"name": "stg_table_name",
 									"type": "String"
 								},
 								"sink": {
@@ -176,7 +176,7 @@
 							},
 							{
 								"source": {
-									"name": "GeneralLedgerStructure13",
+									"name": "stg_table_short_name",
 									"type": "String"
 								},
 								"sink": {
@@ -186,7 +186,7 @@
 							},
 							{
 								"source": {
-									"name": "GeneralLedgerStructure14",
+									"name": "stg_table_abbreviated_name",
 									"type": "String"
 								},
 								"sink": {
@@ -196,7 +196,7 @@
 							},
 							{
 								"source": {
-									"name": "SAGE300.GeneralLedgerStructure",
+									"name": "record_src_value",
 									"type": "String"
 								},
 								"sink": {
@@ -206,7 +206,7 @@
 							},
 							{
 								"source": {
-									"name": "LINKSAT_SAGE300_GeneralLedgerStructure_GeneralLedgerSegment_ABRKID1016",
+									"name": "dv_table_name",
 									"type": "String"
 								},
 								"sink": {
@@ -216,7 +216,7 @@
 							},
 							{
 								"source": {
-									"name": "LKS",
+									"name": "dv_table_type",
 									"type": "String"
 								},
 								"sink": {
@@ -226,7 +226,7 @@
 							},
 							{
 								"source": {
-									"name": "BVV",
+									"name": "bv_table_type",
 									"type": "String"
 								},
 								"sink": {
@@ -236,7 +236,7 @@
 							},
 							{
 								"source": {
-									"name": "Business View",
+									"name": "bv_table_type_description",
 									"type": "String"
 								},
 								"sink": {
@@ -246,7 +246,7 @@
 							},
 							{
 								"source": {
-									"name": "LINKSAT_SAGE300_GeneralLedgerStructure_GeneralLedgerSegment_ABRKID1020",
+									"name": "bv_table_name",
 									"type": "String"
 								},
 								"sink": {
@@ -256,7 +256,7 @@
 							},
 							{
 								"source": {
-									"name": "LINK_GeneralLedgerStructure_GeneralLedgerSegment_ABRKID10",
+									"name": "dv_linked_tables",
 									"type": "String"
 								},
 								"sink": {
@@ -265,15 +265,13 @@
 								}
 							},
 							{
+								"source": {
+									"name": "FileName",
+									"type": "String"
+								},
 								"sink": {
 									"name": "FileName",
 									"type": "String"
-								}
-							},
-							{
-								"sink": {
-									"name": "CreatedDT",
-									"type": "DateTime"
 								}
 							}
 						]
