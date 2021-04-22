@@ -31,8 +31,7 @@
 						}
 					},
 					"sink": {
-						"type": "SqlServerSink",
-						"tableOption": "autoCreate"
+						"type": "SqlServerSink"
 					},
 					"enableStaging": false
 				},
@@ -54,8 +53,8 @@
 						"type": "DatasetReference",
 						"parameters": {
 							"baseURL": "https://AcAzEuKeyVault.vault.azure.net/",
-							"TargetSchema": "dm",
-							"TargetTable": "VaultspeedObject2"
+							"TargetSchema": "dbo",
+							"TargetTable": "VaultSpeedLineageObject_Staged"
 						}
 					}
 				]
