@@ -31,7 +31,8 @@
 						}
 					},
 					"sink": {
-						"type": "SqlServerSink"
+						"type": "SqlServerSink",
+						"preCopyScript": "TRUNCATE TABLE dbo.VaultSpeedLineageObject_Staged"
 					},
 					"enableStaging": false
 				},
