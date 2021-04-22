@@ -59,6 +59,36 @@
 						}
 					}
 				]
+			},
+			{
+				"name": "Merge VS ObjectRelation",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Blob To SqlServer Load",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "0.01:00:00",
+					"retry": 2,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[MergeVaultSpeedObjectRelation]"
+				},
+				"linkedServiceName": {
+					"referenceName": "SqlServer_OnPremises",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/"
+					}
+				}
 			}
 		],
 		"folder": {
