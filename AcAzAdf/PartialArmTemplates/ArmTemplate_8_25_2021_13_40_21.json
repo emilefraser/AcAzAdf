@@ -1,0 +1,419 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "AcAzAdf"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "[concat(parameters('factoryName'), '/Load Vaultspeed Object Lineage')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"description": "Loads Vaultspeed Object Lineage",
+				"activities": [
+					{
+						"name": "Blob To SqlServer Load",
+						"description": "Delimited Load from Azure Blob Storage to Sql Server",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.00:30:00",
+							"retry": 1,
+							"retryIntervalInSeconds": 60,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "DelimitedTextSource",
+								"additionalColumns": [
+									{
+										"name": "FileName",
+										"value": "$$FILEPATH"
+									}
+								],
+								"storeSettings": {
+									"type": "AzureBlobStorageReadSettings",
+									"recursive": false,
+									"wildcardFileName": "*.csv",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "DelimitedTextReadSettings",
+									"skipLineCount": 0
+								}
+							},
+							"sink": {
+								"type": "SqlServerSink",
+								"preCopyScript": "TRUNCATE TABLE DC.VaultSpeedLineageObject_Staged"
+							},
+							"enableStaging": false,
+							"translator": {
+								"type": "TabularTranslator",
+								"mappings": [
+									{
+										"source": {
+											"name": "datavault",
+											"type": "String"
+										},
+										"sink": {
+											"name": "datavault",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "src_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "src_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "src_name_in_bk",
+											"type": "String"
+										},
+										"sink": {
+											"name": "src_name_in_bk",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "record_src_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "record_src_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "src_short_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "src_short_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "src_physical_schema",
+											"type": "String"
+										},
+										"sink": {
+											"name": "src_physical_schema",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "cdc_physical_schema",
+											"type": "String"
+										},
+										"sink": {
+											"name": "cdc_physical_schema",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "ini_physical_schema",
+											"type": "String"
+										},
+										"sink": {
+											"name": "ini_physical_schema",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "stg_physical_schema",
+											"type": "String"
+										},
+										"sink": {
+											"name": "stg_physical_schema",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "dv_physical_schema",
+											"type": "String"
+										},
+										"sink": {
+											"name": "dv_physical_schema",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "bv_physical_schema",
+											"type": "String"
+										},
+										"sink": {
+											"name": "bv_physical_schema",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "src_table_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "src_table_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "stg_table_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "stg_table_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "stg_table_short_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "stg_table_short_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "stg_table_abbreviated_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "stg_table_abbreviated_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "record_src_value",
+											"type": "String"
+										},
+										"sink": {
+											"name": "record_src_value",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "dv_table_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "dv_table_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "dv_table_type",
+											"type": "String"
+										},
+										"sink": {
+											"name": "dv_table_type",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "bv_table_type",
+											"type": "String"
+										},
+										"sink": {
+											"name": "bv_table_type",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "bv_table_type_description",
+											"type": "String"
+										},
+										"sink": {
+											"name": "bv_table_type_description",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "bv_table_name",
+											"type": "String"
+										},
+										"sink": {
+											"name": "bv_table_name",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "dv_linked_tables",
+											"type": "String"
+										},
+										"sink": {
+											"name": "dv_linked_tables",
+											"type": "String"
+										}
+									},
+									{
+										"source": {
+											"name": "FileName",
+											"type": "String"
+										},
+										"sink": {
+											"name": "FileName",
+											"type": "String"
+										}
+									}
+								]
+							}
+						},
+						"inputs": [
+							{
+								"referenceName": "AzureBlobStorage_Delimited_Blob",
+								"type": "DatasetReference",
+								"parameters": {
+									"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/",
+									"columnDelimiter": ";",
+									"escapeCharacter": "\\",
+									"quoteCharacter": "\""
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "SqlServer_OnPremises",
+								"type": "DatasetReference",
+								"parameters": {
+									"baseURL": "https://AcAzEuKeyVault.vault.azure.net/",
+									"TargetSchema": "DC",
+									"TargetTable": "VaultSpeedLineageObject_Staged"
+								}
+							}
+						]
+					},
+					{
+						"name": "Merge VS ObjectRelation",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Blob To SqlServer Load",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "0.01:00:00",
+							"retry": 2,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[DC].[MergeVaultSpeedObjectRelation]"
+						},
+						"linkedServiceName": {
+							"referenceName": "SqlServer_OnPremises",
+							"type": "LinkedServiceReference",
+							"parameters": {
+								"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/"
+							}
+						}
+					}
+				],
+				"folder": {
+					"name": "13_Load"
+				},
+				"annotations": [],
+				"lastPublishTime": "2021-03-23T13:37:14Z"
+			},
+			"dependsOn": []
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage_Delimited_Blob_Attribute')]",
+			"type": "Microsoft.DataFactory/factories/datasets",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"linkedServiceName": {
+					"referenceName": "AzureBlobStorage",
+					"type": "LinkedServiceReference",
+					"parameters": {
+						"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/"
+					}
+				},
+				"parameters": {
+					"baseUrl": {
+						"type": "string",
+						"defaultValue": "https://AcAzEuKeyVault.vault.azure.net/"
+					},
+					"columnDelimiter": {
+						"type": "string",
+						"defaultValue": ";"
+					},
+					"escapeCharacter": {
+						"type": "string",
+						"defaultValue": "\\"
+					},
+					"quoteCharacter": {
+						"type": "string",
+						"defaultValue": "\""
+					}
+				},
+				"folder": {
+					"name": "AzureBlobStorage"
+				},
+				"annotations": [],
+				"type": "DelimitedText",
+				"typeProperties": {
+					"location": {
+						"type": "AzureBlobStorageLocation",
+						"folderPath": "VaultspeedLineage/Attribute",
+						"container": "africanbank"
+					},
+					"columnDelimiter": {
+						"value": "@dataset().columnDelimiter",
+						"type": "Expression"
+					},
+					"escapeChar": {
+						"value": "@dataset().escapeCharacter",
+						"type": "Expression"
+					},
+					"firstRowAsHeader": true,
+					"quoteChar": {
+						"value": "@dataset().quoteCharacter",
+						"type": "Expression"
+					}
+				},
+				"schema": []
+			},
+			"dependsOn": []
+		}
+	]
+}
