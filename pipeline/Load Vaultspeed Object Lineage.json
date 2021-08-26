@@ -279,7 +279,7 @@
 				},
 				"inputs": [
 					{
-						"referenceName": "AzureBlobStorage_Delimited_Blob",
+						"referenceName": "AzureBlobStorage_Delimited_Blob_Attribute",
 						"type": "DatasetReference",
 						"parameters": {
 							"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/",
