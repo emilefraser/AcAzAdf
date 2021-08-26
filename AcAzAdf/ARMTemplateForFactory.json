@@ -405,7 +405,7 @@
 						},
 						"inputs": [
 							{
-								"referenceName": "AzureBlobStorage_Delimited_Blob",
+								"referenceName": "AzureBlobStorage_Delimited_Blob_Attribute",
 								"type": "DatasetReference",
 								"parameters": {
 									"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/",
@@ -465,7 +465,7 @@
 				"lastPublishTime": "2021-03-23T13:37:14Z"
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/datasets/AzureBlobStorage_Delimited_Blob')]",
+				"[concat(variables('factoryId'), '/datasets/AzureBlobStorage_Delimited_Blob_Attribute')]",
 				"[concat(variables('factoryId'), '/datasets/SqlServer_OnPremises')]",
 				"[concat(variables('factoryId'), '/linkedServices/SqlServer_OnPremises')]"
 			]
@@ -1038,67 +1038,6 @@
 						"type": "AzureBlobStorageLocation",
 						"fileName": "VaultspeedObject.csv",
 						"container": "vaultspeed"
-					},
-					"columnDelimiter": {
-						"value": "@dataset().columnDelimiter",
-						"type": "Expression"
-					},
-					"escapeChar": {
-						"value": "@dataset().escapeCharacter",
-						"type": "Expression"
-					},
-					"firstRowAsHeader": true,
-					"quoteChar": {
-						"value": "@dataset().quoteCharacter",
-						"type": "Expression"
-					}
-				},
-				"schema": []
-			},
-			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/AzureBlobStorage')]"
-			]
-		},
-		{
-			"name": "[concat(parameters('factoryName'), '/AzureBlobStorage_Delimited_Blob')]",
-			"type": "Microsoft.DataFactory/factories/datasets",
-			"apiVersion": "2018-06-01",
-			"properties": {
-				"linkedServiceName": {
-					"referenceName": "AzureBlobStorage",
-					"type": "LinkedServiceReference",
-					"parameters": {
-						"baseUrl": "https://AcAzEuKeyVault.vault.azure.net/"
-					}
-				},
-				"parameters": {
-					"baseUrl": {
-						"type": "string",
-						"defaultValue": "https://AcAzEuKeyVault.vault.azure.net/"
-					},
-					"columnDelimiter": {
-						"type": "string",
-						"defaultValue": ";"
-					},
-					"escapeCharacter": {
-						"type": "string",
-						"defaultValue": "\\"
-					},
-					"quoteCharacter": {
-						"type": "string",
-						"defaultValue": "\""
-					}
-				},
-				"folder": {
-					"name": "AzureBlobStorage"
-				},
-				"annotations": [],
-				"type": "DelimitedText",
-				"typeProperties": {
-					"location": {
-						"type": "AzureBlobStorageLocation",
-						"folderPath": "VaultspeedLineage/Object",
-						"container": "africanbank"
 					},
 					"columnDelimiter": {
 						"value": "@dataset().columnDelimiter",
